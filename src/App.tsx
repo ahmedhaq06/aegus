@@ -72,7 +72,7 @@ const App: React.FC = () => {
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">Aegus</div>
+          <div className="logo">AEGUS</div>
           <div className="nav-links">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -226,10 +226,10 @@ const App: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '40px 24px 60px', borderTop: '1px solid rgba(255,255,255,0.06)', background: '#000000' }}>
+      <footer style={{ padding: '40px 24px 60px', borderTop: '1px solid rgba(255,255,255,0.06)', background: '#000000', position: 'relative', zIndex: 10 }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <img src={AegusLogo} alt="Aegus" style={{ height: 28 }} />
+            <img src={AegusLogo} alt="Aegus" style={{ height: 56 }} />
           </div>
           <div style={{ display: 'flex', gap: 24, alignItems: 'center' }}>
             <a href="#" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none' }}>About</a>
