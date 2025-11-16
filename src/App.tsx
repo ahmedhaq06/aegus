@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import SpotlightCard from './SpotlightCard';
 import DotGrid from './DotGrid';
@@ -73,15 +73,7 @@ const App: React.FC = () => {
       <nav className="navbar">
         <div className="nav-container">
           <div className="logo">AEGUS</div>
-          <div className="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Products</a>
-            <a href="#">Solutions</a>
-            <a href="#">Technology</a>
-            <a href="#">Contact</a>
-          </div>
-          <button className="nav-button">Get Started</button>
+          <Nav />
         </div>
       </nav>
 
@@ -244,3 +236,64 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+// Separated Nav component to keep App component lean
+const Nav: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(o => !o);
+  const closeMenu = () => setMenuOpen(false);
+
+  useEffect(() => {
+    // lock body scroll when menu open
+    document.body.classList.toggle('no-scroll', menuOpen);
+    // esc key closes
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMenu();
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [menuOpen]);
+
+  // Close when clicking a link (mobile)
+  const handleLinkClick: React.MouseEventHandler<HTMLAnchorElement> = () => {
+    if (menuOpen) closeMenu();
+  };
+
+  return (
+    <>
+      <div className={`nav-links ${menuOpen ? 'active' : ''}`} id="primary-navigation" role="navigation" aria-label="Main">
+        {menuOpen && (
+          <button
+            className="drawer-close"
+            aria-label="Close navigation menu"
+            onClick={closeMenu}
+          >
+            <span></span>
+            <span></span>
+          </button>
+        )}
+        <a href="#" onClick={handleLinkClick}>Home</a>
+        <a href="#" onClick={handleLinkClick}>About</a>
+        <a href="#" onClick={handleLinkClick}>Products</a>
+        <a href="#" onClick={handleLinkClick}>Solutions</a>
+        <a href="#" onClick={handleLinkClick}>Technology</a>
+        <a href="#" onClick={handleLinkClick}>Contact</a>
+      </div>
+      <button className="nav-button">Get Started</button>
+      <button
+        className={`hamburger ${menuOpen ? 'active' : ''}`}
+        aria-label="Toggle navigation menu"
+        aria-controls="primary-navigation"
+        aria-expanded={menuOpen}
+        onClick={toggleMenu}
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      {/* Overlay for mobile drawer */}
+      <div className={`nav-overlay ${menuOpen ? 'active' : ''}`} onClick={closeMenu} aria-hidden={!menuOpen}></div>
+    </>
+  );
+};
