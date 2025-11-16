@@ -80,22 +80,17 @@
 .navbar {
   position: relative;
   z-index: 10;
-  padding: 20px 0;
+  padding: 20px 40px;
 }
 
 .nav-container {
-  max-width: fit-content;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 14px 32px;
+  padding: 0;
   display: flex;
   align-items: center;
-  gap: 60px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 60px;
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .logo {
@@ -103,12 +98,20 @@
   font-weight: 600;
   color: white;
   letter-spacing: 0.3px;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
   gap: 48px;
   align-items: center;
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 60px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links a {
@@ -150,6 +153,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 12px rgba(0, 56, 255, 0.3);
+  flex-shrink: 0;
 }
 
 .nav-button:hover {

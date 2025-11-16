@@ -226,7 +226,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer style={{ padding: '40px 24px 60px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <footer style={{ padding: '40px 24px 60px', borderTop: '1px solid rgba(255,255,255,0.06)', background: '#000000' }}>
         <div style={{ maxWidth: 1160, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24, flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <img src={AegusLogo} alt="Aegus" style={{ height: 28 }} />
