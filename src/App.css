@@ -1,13 +1,13 @@
 .app {
   --torch-size-x: 55%;
-  --torch-size-y: 50%;
+  --torch-size-y: 25%;
   --torch-pos-x: 50%;
-  --torch-pos-y: 18%;
+  --torch-pos-y: 4%;
 
-  min-height: 100vh;
+  min-height: 0vh;
   background: #000000;
   
-  /* centered torch spotlight using CSS variables for responsive control - smooth pure blue gradient */
+  
   background-image: radial-gradient(
     ellipse var(--torch-size-x) var(--torch-size-y) at var(--torch-pos-x) var(--torch-pos-y), 
     #00229c 0%, 
@@ -25,7 +25,6 @@
   overflow: hidden;
 }
 
-/* Grid lines - horizontal and vertical */
 .grid-line {
   position: absolute;
   pointer-events: none;
@@ -39,18 +38,18 @@
   left: 0;
 }
 
-/* Responsive torch adjustments - only the torch responds */
+
 @media (max-width: 1200px) {
   .app {
     --torch-size-x: 90%;
-    --torch-size-y: 60%;
+    --torch-size-y: 50%;
     --torch-pos-y: 16%;
   }
 }
 
 @media (max-width: 768px) {
   .app {
-    --torch-size-x: 110%;
+    --torch-size-x: 1110%;
     --torch-size-y: 80%;
     --torch-pos-y: 14%;
   }
@@ -58,7 +57,7 @@
 
 @media (max-width: 420px) {
   .app {
-    --torch-size-x: 130%;
+    --torch-size-x: 1300%;
     --torch-size-y: 90%;
     --torch-pos-y: 12%;
   }
@@ -70,7 +69,6 @@
   top: 0;
 }
 
-/* Filled cells - random rectangles with lighter shade */
 .filled-cell {
   position: absolute;
   pointer-events: none;
@@ -79,7 +77,6 @@
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-/* Navigation */
 .navbar {
   position: relative;
   z-index: 10;
@@ -161,7 +158,6 @@
   box-shadow: 0 4px 20px rgba(0, 56, 255, 0.4);
 }
 
-/* Hero Section */
 .hero {
   position: relative;
   z-index: 1;
@@ -199,7 +195,7 @@
 }
 
 .hero-title {
-  font-size: 80px;
+  font-size: 72px;
   font-weight: 700;
   color: white;
   line-height: 1.05;
@@ -263,7 +259,6 @@
   box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
@@ -290,4 +285,34 @@
   .badge {
     left: 0;
   }
+}
+
+.card-spotlight {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid #222;
+  background-color: #111;
+  padding: 2rem;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 0.6;
 }
